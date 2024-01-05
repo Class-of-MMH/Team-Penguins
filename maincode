@@ -21,15 +21,19 @@ const int ver_len=20;
 int batpos_left_x=0;
 int batpos_left_y=ver_len/2;
 
+int batpos_right_x=hor_len;
+int batpos_right_y=ver_len/2;
+
 int batsize=3;
-int bat1Pos = ver_len / 2 ;
-    int bat2Pos = ver_len / 2;
+//initial poition of ball
+ int ballX = hor_len / 2;
+ int ballY = ver_len / 2;
 
-    int ballX = hor_len / 2;
-    int ballY = ver_len / 2;
-    int ballSpeedX = -1;
-    int ballSpeedY = 1;
+//initial speed of the ball:top left(diagonal)
+int ballSpeedX = -1;
+int ballSpeedY = -1;
 
+//initial score of both players
     int score1 = 0;
     int score2 = 0;
 
