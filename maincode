@@ -5,7 +5,7 @@
 using namespace std;
 
 // Function to set the cursor position in the console window
-void gotoxy(int x, int y) {
+void co_ordinate(int x, int y) {
     COORD c;
     c.X = x;
     c.Y = y;
@@ -25,20 +25,30 @@ int batpos_right_x=hor_len;
 int batpos_right_y=ver_len/2;
 
 int batsize=3;
+
 //initial poition of ball
- int ballX = hor_len / 2;
- int ballY = ver_len / 2;
+ int ballx = hor_len / 2;
+ int bally = ver_len / 2;
 
 //initial speed of the ball:top left(diagonal)
-int ballSpeedX = -1;
-int ballSpeedY = -1;
+int ballspd_x = -1;
+int ballspd_y = -1;
 
 //initial score of both players
     int score1 = 0;
     int score2 = 0;
 
-    char input;
+//display bat
+for(int i=0;i<batsize;i++)
+{
+co_ordinate(0,ver_len/2-batsize/2);
+cout<<"*";
+co_ordinate(hor_len,ver_len/2-batsize/2);
+cout<<"*";
+
+}
+
+ 
 
 
-//
 }
