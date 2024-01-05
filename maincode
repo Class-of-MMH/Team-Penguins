@@ -22,6 +22,19 @@ int batpos_left_x=0;
 int batpos_left_y=ver_len/2;
 
 int batsize=3;
+int bat1Pos = ver_len / 2 ;
+    int bat2Pos = ver_len / 2;
+
+    int ballX = hor_len / 2;
+    int ballY = ver_len / 2;
+    int ballSpeedX = -1;
+    int ballSpeedY = 1;
+
+    int score1 = 0;
+    int score2 = 0;
+
+    char input;
+
 
 //
 }
