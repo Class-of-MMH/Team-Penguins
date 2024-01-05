@@ -11,4 +11,17 @@ void gotoxy(int x, int y) {
     c.Y = y;
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);
 }
+int main()
+{
+//window screen 
+const int hor_len=44;
+const int ver_len=20;
 
+//initial position of bat
+int batpos_left_x=0;
+int batpos_left_y=ver_len/2;
+
+int batsize=3;
+
+
+}
