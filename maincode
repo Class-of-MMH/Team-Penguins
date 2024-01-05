@@ -47,7 +47,8 @@ co_ordinate(hor_len,ver_len/2-batsize/2);
 cout<<"*";
 
 }
-
+//display score board
+cout<<"Score:"<<"score1"<<":"<<"score2"<<endl;
  
 
 
