@@ -16,13 +16,12 @@ int main()
   //window screen 
 const int hor_len=44;
 const int ver_len=20;
+int batsize=3;
 
   //initial position of bat
 int batpos_left=ver_len/2-batsize/2;
 
 int batpos_right=ver_len/2-batsize/2;
-
-int batsize=3;
 
 //initial poition of ball
  int ballX = hor_len / 2;
@@ -43,9 +42,9 @@ while (score1<=5 && score2<=5) {
 
         // Display paddles
         for (int i = 0; i < batsize; i++) {
-            co_ordinate(0, batpos_left_y + i);
+            co_ordinate(0, batpos_left + i);
             cout << "|";
-            co_ordinate(hor_len - 1, batpos_right_y + i);
+            co_ordinate(hor_len - 1, batpos_right + i);
             cout << "|";
         }
 // Display ball
@@ -61,20 +60,20 @@ cout<<"Score:"<<score1<<":"<<score2<<endl;
 
             switch (input) {
             case 'w':
-                if (batpos_left_y > 0)
-                batpos_left_y--;
+                if (batpos_left > 0)
+                batpos_left--;
                 break;
             case 's':
-                if (batpos_left_y < ver_len - batsize)
-                batpos_left_y++;
+                if (batpos_left < ver_len - batsize)
+                batpos_left++;
                 break;
             case 'i':
-                if (batpos_right_y > 0)
-                batpos_right_y--;
+                if (batpos_right > 0)
+                batpos_right--;
                 break;
             case 'k':
-                if (batpos_right_y < ver_len - batsize)
-                batpos_right_y++;
+                if (batpos_right < ver_len - batsize)
+                batpos_right++;
                 break;
             }
         }
@@ -87,11 +86,11 @@ cout<<"Score:"<<score1<<":"<<score2<<endl;
             ballspd_Y = -ballspd_Y;
         }
 // Ball collision with paddles
-        if (ballX == 1 && (ballY >= batpos_left_y && ballY < batpos_left_y + batsize)) {
+        if (ballX == 1 && (ballY >= batpos_left && ballY < batpos_left + batsize)) {
             ballspd_X = -ballspd_X;
         }
 
-        if (ballX == hor_len-2 && (ballY >= batpos_right_y && ballY < batpos_right_y + batsize)) {
+        if (ballX == hor_len-2 && (ballY >= batpos_right && ballY < batpos_right + batsize)) {
             ballspd_X = -ballspd_X;
         }
 
