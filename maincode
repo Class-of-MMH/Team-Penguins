@@ -32,8 +32,8 @@ int ballspd_X = -1;
 int ballspd_Y = -1;
 
 //initial score of both players
-    int score1 = 0;
-    int score2 = 0;
+    int player1score = 0;
+    int player2score = 0;
 
 
 char input;
@@ -52,7 +52,7 @@ while (score1<=5 && score2<=5) {
         cout << "O";
 //display score board
 co_ordinate(hor_len/2,0);
-cout<<"Score:"<<score1<<":"<<score2<<endl;
+cout<<"Score:"<<player1score<<"-"<<player2score<<endl;
 
 
 // Move bats based on input
@@ -107,12 +107,12 @@ cout<<"Score:"<<score1<<":"<<score2<<endl;
 
         // Ball out of bounds
         if (ballX < 0) {
-            score2++;
+            player2score++;
             ballX = hor_len / 2;
             ballY = ver_len / 2;
         }
 if (ballX >= hor_len) {
-            score1++;
+            player1score++;
             ballX = hor_len/ 2;
             ballY = ver_len / 2;
         }
