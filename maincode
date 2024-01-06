@@ -60,19 +60,19 @@ cout<<"Score:"<<score1<<":"<<score2<<endl;
             input = _getch();
 
             switch (input) {
-            case 'w':
+            case 's':
                 if (batpos_left > 0)
                 batpos_left--;
                 break;
-            case 's':
+            case 'x':
                 if (batpos_left < ver_len - batsize)
                 batpos_left++;
                 break;
-            case 'i':
+            case 'k':
                 if (batpos_right > 0)
                 batpos_right--;
                 break;
-            case 'k':
+            case 'm':
                 if (batpos_right < ver_len - batsize)
                 batpos_right++;
                 break;
