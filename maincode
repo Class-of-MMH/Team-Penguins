@@ -36,11 +36,6 @@ int ballspd_Y = -1;
     int score1 = 0;
     int score2 = 0;
 
-// Display ball
-        co_ordinate(ballX, ballY);
-        cout << "O";
-//display score board
-cout<<"Score:"<<"score1"<<":"<<"score2"<<endl;
 
 char input;
 
@@ -53,6 +48,12 @@ while (score1<=5 && score2<=5) {
             co_ordinate(hor_len - 1, batpos_right_y + i);
             cout << "|";
         }
+// Display ball
+        co_ordinate(ballX, ballY);
+        cout << "O";
+//display score board
+cout<<"Score:"<<score1<<":"<<score2<<endl;
+
 
 // Move paddles based on input
         if (_kbhit()) {
