@@ -27,9 +27,9 @@ int batpos_right=ver_len/2-batsize/2;
  int ballX = hor_len / 2;
  int ballY = ver_len / 2;
 
-//initial speed of the ball:top left(diagonal)
-int ballspd_X = -1;
-int ballspd_Y = -1;
+//initial speed of the ball
+int ballspd_X = 0;
+int ballspd_Y = 0;
 
 //initial score of both players
     int player1score = 0;
@@ -60,6 +60,9 @@ cout<<"Score:"<<player1score<<"-"<<player2score<<endl;
             input = _getch();
 
             switch (input) {
+            case 'a':
+                 ballspd_X = -1;
+                 ballspd_Y = -1;
             case 's':
                 if (batpos_left > 0)
                 batpos_left--;
