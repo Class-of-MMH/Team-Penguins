@@ -76,6 +76,16 @@ cout<<"Score:"<<score1<<":"<<score2<<endl;
                 if (batpos_right < ver_len - batsize)
                 batpos_right++;
                 break;
+           case 'b':
+                  ballspd_X=0;
+                  ballspd_Y=0;
+                  break;
+           case 'n':
+                  ballX = hor_len / 2;
+                  ballY = ver_len / 2;
+                  ballspd_X = -1;
+                  ballspd_Y = -1;
+                  break;
             }
         }
  // Move ball
