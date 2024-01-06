@@ -115,7 +115,8 @@ if (ballX >= hor_len) {
 
  
 }
-
+cout<<"Game Over!"<<endl;
+return 0;
 }
 
 
