@@ -37,9 +37,17 @@ int ballspd_Y = -1;
 //initial score of both players
     int score1 = 0;
     int score2 = 0;
+
+// Display ball
+        gotoxy(ballX, ballY);
+        cout << "O";
+//display score board
+cout<<"Score:"<<"score1"<<":"<<"score2"<<endl;
+
 char input;
 
-while (true) {
+while (score1<=5 && score2<=5) {
+
         // Display paddles
         for (int i = 0; i < batsize; i++) {
             gotoxy(0, batpos_left_y + i);
@@ -48,31 +56,26 @@ while (true) {
             cout << "|";
         }
 
-// Display ball
-        gotoxy(ballX, ballY);
-        cout << "O";
-//display score board
-cout<<"Score:"<<"score1"<<":"<<"score2"<<endl;
-
-
-
-
 // Move paddles based on input
         if (_kbhit()) {
             input = _getch();
 
             switch (input) {
             case 'w':
-                if (batpos_left_y > 0) batpos_left_y--;
+                if (batpos_left_y > 0)
+                batpos_left_y--;
                 break;
             case 's':
-                if (batpos_left_y < ver_len - batsize) batpos_left_y++;
+                if (batpos_left_y < ver_len - batsize)
+                batpos_left_y++;
                 break;
             case 'i':
-                if (batpos_right_y > 0) batpos_right_y--;
+                if (batpos_right_y > 0)
+                batpos_right_y--;
                 break;
             case 'k':
-                if (batpos_right_y < ver_len - batsize) batpos_right_y++;
+                if (batpos_right_y < ver_len - batsize)
+                batpos_right_y++;
                 break;
             }
         }
