@@ -105,7 +105,7 @@ while (score1<=5 && score2<=5) {
 if (ballX >= hor_len) {
             score1++;
             ballX = hor_len/ 2;
-            ballY = ver_lenu / 2;
+            ballY = ver_len / 2;
         }
 
         // Slow down the game a bit
