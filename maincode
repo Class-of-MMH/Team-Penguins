@@ -39,7 +39,7 @@ int ballspd_Y = -1;
     int score2 = 0;
 
 // Display ball
-        gotoxy(ballX, ballY);
+        co_ordinate(ballX, ballY);
         cout << "O";
 //display score board
 cout<<"Score:"<<"score1"<<":"<<"score2"<<endl;
@@ -50,9 +50,9 @@ while (score1<=5 && score2<=5) {
 
         // Display paddles
         for (int i = 0; i < batsize; i++) {
-            gotoxy(0, batpos_left_y + i);
+            co_ordinate(0, batpos_left_y + i);
             cout << "|";
-            gotoxy(hor_len - 1, batpos_right_y + i);
+            co_ordinate(hor_len - 1, batpos_right_y + i);
             cout << "|";
         }
 
