@@ -38,7 +38,7 @@ int ballspd_Y = -1;
 
 char input;
 
-while (score1<=5 && score2<=5) {
+while (player1score<=10 && player2score<=10) {
 
         // Display bats
         for (int i = 0; i < batsize; i++) {
