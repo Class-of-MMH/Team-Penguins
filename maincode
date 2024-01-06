@@ -51,6 +51,7 @@ while (score1<=5 && score2<=5) {
         co_ordinate(ballX, ballY);
         cout << "O";
 //display score board
+co_ordinate(hor_len/2,0);
 cout<<"Score:"<<score1<<":"<<score2<<endl;
 
 
