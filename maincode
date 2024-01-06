@@ -118,7 +118,7 @@ if (ballX >= hor_len) {
         }
 
         // Slow down the game a bit
-        Sleep(50);
+        Sleep(80);
 
         // Clear the screen
         system("cls");
