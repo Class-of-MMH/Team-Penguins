@@ -18,11 +18,9 @@ const int hor_len=44;
 const int ver_len=20;
 
   //initial position of bat
-int batpos_left_x=0;
-int batpos_left_y=ver_len/2;
+int batpos_left=ver_len/2-batsize/2;
 
-int batpos_right_x=hor_len;
-int batpos_right_y=ver_len/2;
+int batpos_right=ver_len/2-batsize/2;
 
 int batsize=3;
 
