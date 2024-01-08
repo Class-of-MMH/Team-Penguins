@@ -23,7 +23,7 @@ int batpos_left=ver_len/2-batsize/2;
 
 int batpos_right=ver_len/2-batsize/2;
 
-//initial poition of ball
+//initial position of ball
  int ballX = hor_len / 2;
  int ballY = ver_len / 2;
 
