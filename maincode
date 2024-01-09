@@ -149,6 +149,29 @@ if (ballX >= hor_len) {
             ballX = hor_len/ 2;
             ballY = ver_len / 2;
         }
+// Ball out of bounds
+        if (ballX < 0) {
+            player2score++;
+
+           
+            ballX = 1;
+            ballY = ver_len / 2;
+            ballspd_X=0;
+            ballspd_Y=0;
+           
+
+        }
+
+        if (ballX >= hor_len) {
+            player1score++;
+
+            ballX = hor_len-2;
+            ballY = ver_len / 2;
+            ballspd_X=0;
+            ballspd_Y=0;
+            
+
+        }
 
         // Slow down the game a bit
         Sleep(80);
