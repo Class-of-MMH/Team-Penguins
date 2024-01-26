@@ -65,7 +65,7 @@ int ballspd_Y = 0;
 
 char input;
 
-while (player1score<=10 && player2score<=10) {
+while (player1score<=100 && player2score<=100) {
         createBoundary(hor_len, ver_len, player1score, player2score);
 
         // Display bats
@@ -150,7 +150,7 @@ while (player1score<=10 && player2score<=10) {
 
         // Ball out of bounds
         if (ballX < 0) {
-            player2score++;
+            player2score+=10;
 
 
             ballX = 3; //<<<<<<<<<<
@@ -162,7 +162,7 @@ while (player1score<=10 && player2score<=10) {
         }
 
         if (ballX >= hor_len) {
-            player1score++;
+            player1score+=10;
 
             ballX = hor_len-4;;//<<<<<<<<<
             ballY = ver_len / 2;
