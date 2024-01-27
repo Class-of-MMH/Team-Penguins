@@ -1,8 +1,16 @@
 #include <iostream>
-#include <conio.h>
-#include <windows.h>
+#include <conio.h> // For _getch() function
 #include<mmsystem.h>
+#include <windows.h>
+
 using namespace std;
+
+const int  hor_len= 40;
+const int ver_len = 20;
+
+int ballX, ballY, batpos_left, batpos_right,player1score,player2score,batsize;
+int ballspd_X, ballspd_Y;
+//bool isGameOver;
 
 // Function to set the cursor position in the console window
 void co_ordinate(int x, int y) {
@@ -11,79 +19,123 @@ void co_ordinate(int x, int y) {
     c.Y = y;
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);
 }
+void  createBoundary(int ballX,int ballY, int batpos_left, int batpos_right,int player1score,int player2score) {
+    system("cls"); // Clears the console screen
 
-void createBoundary(int hor_len, int ver_len, int player1score, int player2score) {
-    for (int i = 0; i < hor_len; ++i)
-        cout << "*";  // Print the top border
-
+    for (int i = 0; i <hor_len + 2; i++)
+        cout << "#";
     cout << endl;
 
-    for (int i = 1; i < ver_len - 1; ++i) {
-        cout << "*";  // Print left border
+    for (int i = 0; i <ver_len; i++) {
+        for (int j = 0; j <hor_len; j++) {
+            if (j == 0)
+                cout << "#"; // Left boundary
 
-        for (int j = 1; j < hor_len - 1; ++j)
-            cout << " ";  // Print empty space inside the boundary
+            if (i == ballY && j == ballX)
+                cout << "O"; // Ball
+            else if (i ==batpos_left  && j == 0){
 
-        cout << "*" << endl;  // Print right border
+                cout << "|";
+
+
+            }
+                // Left paddle
+            else if (i == batpos_right && j == hor_len - 1){
+
+           cout << "|";
+
+            }
+            else
+                cout << " ";
+
+            if (j == hor_len- 1)
+                cout << "#"; // Right boundary
+        }
+        cout << endl;
     }
 
-    for (int i = 0; i < hor_len; ++i)
-        cout << "*";  // Print the bottom border
-
-         co_ordinate(hor_len / 2 - 5, ver_len + 1); // Move the score display one line below the bottom border
-    cout << "Score: " << player1score << " - " << player2score;
-
-
+    for (int i = 0; i < hor_len + 2; i++)
+        cout << "#";
     cout << endl;
+
+    cout << "Score 1: " << player1score << "  Score 2: " << player2score << endl;
 }
 
 
-int main()
+int main() /// Function to draw the game board
 {
-  //window screen
-const int hor_len=44;
-const int ver_len=20;
-int batsize=3;
+   // system("cls"); // Clears the console screen
 
-  //initial position of bat
-int batpos_left=ver_len/2-batsize/2;
+    batsize=3;
+     //initial position of bat
+      batpos_left=ver_len/2-batsize/2;
 
-int batpos_right=ver_len/2-batsize/2;
+      batpos_right=ver_len/2-batsize/2;
 
 //initial poition of ball
- int ballX = hor_len / 2;
- int ballY = ver_len / 2;
+     ballX = hor_len / 2;
+     ballY = ver_len / 2;
 
 //initial speed of the ball
-int ballspd_X = 0;
-int ballspd_Y = 0;
+   ballspd_X = -1;
+   ballspd_Y = 1;
 
 //initial score of both players
-    int player1score = 0;
-    int player2score = 0;
+     player1score = 0;
+     player2score = 0;
 
+      int option;
 
-char input;
+    cout << "Choose a game mode:" << endl;
+    cout << "1. Player vs Computer" << endl;
+    cout << "2. Player vs Player" << endl;
+    cout << "Enter your choice (1 or 2): ";
+    cin >> option;
 
-while (player1score<=100 && player2score<=100) {
-        createBoundary(hor_len, ver_len, player1score, player2score);
+    char input;
 
-        // Display bats
-        for (int i = 0; i < batsize; i++) {
-            co_ordinate(2, batpos_left + i); //border theke bat upore thakar jonno
-            cout << "|";
-            co_ordinate(hor_len - 3, batpos_right + i);  //-1-2=-3(-1 hocche indexing er jonno)
-            cout << "|";
+     while (player1score<=10 && player2score<=10)
+     {
+
+                 createBoundary(ballX,ballY, batpos_left, batpos_right,player1score, player2score);
+
+                 // Game Logic
+
+        // Move paddles based on user input
+        if (option == 1)
+        {
+
+         if (_kbhit()) {
+                 input= _getch();
+                switch (input) {
+                     case 's':
+                if (batpos_left > 0)
+                batpos_left--;
+                break;
+            case 'x':
+                if (batpos_left < ver_len - batsize)
+                batpos_left++;
+                break;}
+         }
+
+            // Player vs Computer
+            // Move the left paddle based on the ball's Y position
+             if (batpos_right +1 < ballY)
+        batpos_right++;
+
+    else if (batpos_right +3 > ballY+2)
+        batpos_right--;
         }
-// Display ball
-        co_ordinate(ballX, ballY);
-        cout << "O";
 
 
 
-// Move bats based on input
-        if (_kbhit()) {
-            input = _getch();
+        else if (option == 2)
+        {
+           // Player vs Player
+            // Move paddles based on user input
+
+             if (_kbhit()) {
+                 input= _getch();
 
             switch (input) {
             case 'a':
@@ -109,7 +161,7 @@ while (player1score<=100 && player2score<=100) {
                   ballspd_X=0;
                   ballspd_Y=0;
                   break;
-           case 'n':  //center theke start
+           case 'n':
                   ballX = hor_len / 2;
                   ballY = ver_len / 2;
                   ballspd_X = -1;
@@ -128,69 +180,65 @@ while (player1score<=100 && player2score<=100) {
                     break;
 
 
-
-            }
         }
- // Move ball
+
+     }
+
+
+
+}
+// Move ball
         ballX += ballspd_X;
         ballY += ballspd_Y;
 
         // Ball collision with walls
-        if (ballY == 1 || ballY == ver_len - 2) {  //<<<<<<<
+        if (ballY == 0 || ballY == ver_len - 1) {
             ballspd_Y = -ballspd_Y;
-
         }
 // Ball collision with bats
-        if (ballX == 3 && (ballY >= batpos_left && ballY < batpos_left + batsize)) {  //<<<<<<<
-
+        if (ballX == 1 && (ballY >= batpos_left && ballY < batpos_left + batsize)) {
             ballspd_X = -ballspd_X;
-            PlaySound(TEXT("esha.wav"),NULL,SND_FILENAME|SND_ASYNC);
+             PlaySound(TEXT("esha.wav"),NULL,SND_FILENAME|SND_ASYNC);
         }
 
-        if (ballX == hor_len-4 && (ballY >= batpos_right && ballY < batpos_right + batsize)) {   //<<<<<<<<
+        if (ballX == hor_len-2 && (ballY >= batpos_right && ballY < batpos_right + batsize)) {
             ballspd_X = -ballspd_X;
-            PlaySound(TEXT("esha.wav"),NULL,SND_FILENAME|SND_ASYNC);
+             PlaySound(TEXT("esha.wav"),NULL,SND_FILENAME|SND_ASYNC);
         }
 
         // Ball out of bounds
         if (ballX < 0) {
-            player2score+=10;
+            player2score++;
 
 
-            ballX = 3; //<<<<<<<<<<
+            ballX = 1;
             ballY = ver_len / 2;
             ballspd_X=0;
             ballspd_Y=0;
 
-//PlaySound(TEXT("Rumi.wav"),NULL,SND_FILENAME|SND_ASYNC);
+
         }
 
         if (ballX >= hor_len) {
-            player1score+=10;
+            player1score++;
 
-            ballX = hor_len-4;;//<<<<<<<<<
+            ballX = hor_len-2;
             ballY = ver_len / 2;
             ballspd_X=0;
             ballspd_Y=0;
+
 
         }
 
 
         // Slow down the game a bit
-        Sleep(100);
+        Sleep(80);
 
         // Clear the screen
-        system("cls");
+        //system("cls");
+     }
+PlaySound(TEXT("Rumi.wav"),NULL,SND_FILENAME|SND_ASYNC);
+cout<<"Game Over!"<<endl;
+return 0;
+     }
 
-
-}
-       co_ordinate(hor_len / 2, ver_len/2);
-        // Move below the score
-       // PlaySound(TEXT("Rumi.wav"),NULL,SND_FILENAME|SND_ASYNC);
-           cout << "Game Over!" << endl;
-          // PlaySound(TEXT("Rumi.wav"),NULL,SND_FILENAME|SND_ASYNC);
-
-
-    return 0;
-
-}
