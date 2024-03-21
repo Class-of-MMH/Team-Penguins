@@ -95,7 +95,7 @@ int main() /// Function to draw the game board
 
     char input;
 
-     while (player1score<=10 && player2score<=10)
+     while (player1score<=1 && player2score<=1)
      {
 
                  createBoundary(ballX,ballY, batpos_left, batpos_right,player1score, player2score);
@@ -199,12 +199,12 @@ int main() /// Function to draw the game board
 // Ball collision with bats
         if (ballX == 1 && (ballY >= batpos_left && ballY < batpos_left + batsize)) {
             ballspd_X = -ballspd_X;
-             PlaySound(TEXT("esha.wav"),NULL,SND_FILENAME|SND_ASYNC);
+             PlaySound(TEXT("batsound.wav"),NULL,SND_FILENAME|SND_ASYNC);
         }
 
         if (ballX == hor_len-2 && (ballY >= batpos_right && ballY < batpos_right + batsize)) {
             ballspd_X = -ballspd_X;
-             PlaySound(TEXT("esha.wav"),NULL,SND_FILENAME|SND_ASYNC);
+             PlaySound(TEXT("batsound.wav"),NULL,SND_FILENAME|SND_ASYNC);
         }
 
         // Ball out of bounds
@@ -238,8 +238,7 @@ int main() /// Function to draw the game board
         // Clear the screen
         //system("cls");
      }
-PlaySound(TEXT("Rumi.wav"),NULL,SND_FILENAME|SND_ASYNC);
+PlaySound(TEXT("gameover.wav"),NULL,SND_FILENAME|SND_ASYNC);
 cout<<"Game Over!"<<endl;
 return 0;
      }
-
